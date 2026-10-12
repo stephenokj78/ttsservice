@@ -19,7 +19,8 @@ echo "========================================"
 echo "Starting TTSService on Port $PORT..."
 echo "========================================"
 
-nohup python3 -m uvicorn app:app --host 0.0.0.0 --port $PORT --workers 1 >> "$LOG_FILE" 2>&1 &
+export PORT=$PORT
+nohup python3 app.py >> "$LOG_FILE" 2>&1 &
 NEW_PID=$!
 echo $NEW_PID > "$PID_FILE"
 
